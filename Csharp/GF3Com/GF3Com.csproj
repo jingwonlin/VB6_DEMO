@@ -8,8 +8,9 @@
     <RootNamespace>GF3Com</RootNamespace>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <!-- x86 to stay compatible with api232.dll (32-bit); switch to AnyCPU if using System.IO.Ports only -->
-    <PlatformTarget>x86</PlatformTarget>
+    <!-- AnyCPU: 使用 System.IO.Ports 原生串列埠。
+         若需使用 api232.dll (32-bit)，請改回 x86 並同步更新 .sln 組態。 -->
+    <PlatformTarget>AnyCPU</PlatformTarget>
 <Version>1.0.45</Version>
     <Company>NANYA</Company>
     <Product>GF3</Product>
