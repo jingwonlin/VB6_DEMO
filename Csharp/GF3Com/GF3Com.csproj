@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>GF3Com</AssemblyName>
+    <RootNamespace>GF3Com</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- x86 to stay compatible with api232.dll (32-bit); switch to AnyCPU if using System.IO.Ports only -->
+    <PlatformTarget>x86</PlatformTarget>
+    <ApplicationIcon>npc.ico</ApplicationIcon>
+    <Version>1.0.45</Version>
+    <Company>NANYA</Company>
+    <Product>GF3</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
