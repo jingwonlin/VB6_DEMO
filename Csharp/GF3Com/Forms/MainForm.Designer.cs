@@ -21,7 +21,6 @@ partial class MainForm
     private MenuStrip _menuStrip    = null!;
     private ToolStripMenuItem _mnuFunction = null!;
     private ToolStripMenuItem _mnuComPort  = null!;
-    private ToolStripMenuItem _mnuSep      = null!;
     private ToolStripMenuItem _mnuExit     = null!;
 
     protected override void Dispose(bool disposing)
@@ -34,11 +33,10 @@ partial class MainForm
     private void InitializeComponent()
     {
         // ── 選單 ────────────────────────────────────────────────────
-        _menuStrip    = new MenuStrip();
-        _mnuFunction  = new ToolStripMenuItem("功能選項(&1)");
-        _mnuComPort   = new ToolStripMenuItem("串聯動態");
-        _mnuSep       = new ToolStripSeparator() as ToolStripMenuItem ?? new ToolStripMenuItem("-");
-        _mnuExit      = new ToolStripMenuItem("結束作業");
+        _menuStrip   = new MenuStrip();
+        _mnuFunction = new ToolStripMenuItem("功能選項(&1)");
+        _mnuComPort  = new ToolStripMenuItem("串聯動態");
+        _mnuExit     = new ToolStripMenuItem("結束作業");
 
         _mnuComPort.Click += MenuComPort_Click;
         _mnuExit.Click    += MenuExit_Click;
