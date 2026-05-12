@@ -41,6 +41,12 @@ internal sealed class PlcCommunicator
 
         if (pi <= 8)
         {
+            // ── 步驟 1：先執行 dr_sub（對應 VB6 TimerNEW_Timer 最前面的 5 個 If 判斷）
+            // port 4→awno"1", 5→"2", 6→"3", 7→"4", 8→"5"
+            string awno = (pi - 3).ToString();
+            DrSub(awno, pi);
+
+            // ── 步驟 2：接著執行一般 PLC 狀態輪詢
             // 原料 port 每次都送查詢
             if (_ports[8].IsOpen)
                 _ports[8].Output(PlcConstants.GetPlcQuery(8));
@@ -254,8 +260,9 @@ internal sealed class PlcCommunicator
         }
 
         // 更新 dr 表
+        // VB6: Mid(dr_buf, 1, 1) = drBuf[0], Mid(dr_buf, 2, 9) = drBuf[1..10] (9 chars)
         _db.Execute1(
-            $"update dr set dr_use='{drBuf[0]}',dr_stat='{drBuf[1..9]}' " +
+            $"update dr set dr_use='{drBuf[0]}',dr_stat='{drBuf[1..10]}' " +
             $"where dr_awno='{awno}'");
         _updateUi(plcPort + 17, jj.ToString(), drBuf, $"ID{id}: OK", Color.Blue);
 
